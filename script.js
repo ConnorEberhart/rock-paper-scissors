@@ -20,25 +20,26 @@ function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice){
         console.log("Tie!")
+        return 3;
     }
     else if ((humanChoice == "Rock") && (computerChoice == "Paper")) {
         console.log("You lose! Paper beats Rock!");
-    return false}
+    return 2}
     else if ((humanChoice == "Rock") && (computerChoice == "Scissors")){
         console.log("You Win! Rock beats Scissors!");
-     return true}
+     return 1}
     else if ((humanChoice == "Paper") && (computerChoice == "Rock")){
         console.log("You Win! Paper beats Rock!");
-    return true}
+    return 1}
     else if ((humanChoice == "Paper") && (computerChoice == "Scissors")){
         console.log("You LOSE! Scissors beats Paper!");
-     return false}
+     return 2}
     else if ((humanChoice == "Scissors") && (computerChoice == "Rock")){
         console.log("You LOSE! Rock beats Scissors!");
-     return false}
+     return 2}
     else if ((humanChoice == "Scissors") && (computerChoice == "Paper")){
         console.log("You WIN! Scissors beats paper!");
-    return true}
+    return 1}
 }
     
 
@@ -47,13 +48,17 @@ function playGame() {
    let computerScore = 0;
     for (let i = 0; i<5; ++i) {
       let returnVal =  playRound(getHumanChoice(),getComputerChoice());
-        if (returnVal){
+        if (returnVal == 1){
             ++humanScore;
             console.log(`Score is now, you: ${humanScore} vs computer: ${computerScore}`);
         }
-        else {
+        else if (returnVal == 2){
            ++computerScore;
            console.log(`Score is now, you: ${humanScore} vs computer: ${computerScore}`);
+        }
+        else {
+         console.log(`Score is the same!`);
+
         }
     }
     console.log(`FINAL SCORE!!!!! , you: ${humanScore} vs computer: ${computerScore}`)
